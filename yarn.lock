@@ -474,6 +474,14 @@
     react-textarea-autosize "8.5.9"
     type-fest "^4.27.0"
 
+"@mantine/form@^8.1.1", "@mantine/form@>=7.0.0":
+  version "8.1.1"
+  resolved "https://registry.npmjs.org/@mantine/form/-/form-8.1.1.tgz"
+  integrity sha512-9QGiPa51SMjbxA25fOwiWFkayIzZzTeOdhFv6pJgxSe3/4DxI0fmJUzxXnBpXuPAYYyHyeHm1I1gRGreplFGVg==
+  dependencies:
+    fast-deep-equal "^3.1.3"
+    klona "^2.0.6"
+
 "@mantine/hooks@^8.1.0", "@mantine/hooks@8.1.0":
   version "8.1.0"
   resolved "https://registry.npmjs.org/@mantine/hooks/-/hooks-8.1.0.tgz"
@@ -679,6 +687,13 @@
   version "7.0.15"
   resolved "https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.15.tgz"
   integrity sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==
+
+"@types/node@^18.0.0 || ^20.0.0 || >=22.0.0", "@types/node@^24.0.3":
+  version "24.0.3"
+  resolved "https://registry.npmjs.org/@types/node/-/node-24.0.3.tgz"
+  integrity sha512-R4I/kzCYAdRLzfiCabn9hxWfbuHS573x+r0dJMkkzThEa7pbrcDWK+9zu3e7aBOouf+rQAciqPFMnxwr0aWgKg==
+  dependencies:
+    undici-types "~7.8.0"
 
 "@types/react-dom@^19.1.2":
   version "19.1.6"
@@ -999,6 +1014,11 @@ detect-node-es@^1.1.0:
   version "1.1.0"
   resolved "https://registry.npmjs.org/detect-node-es/-/detect-node-es-1.1.0.tgz"
   integrity sha512-ypdmJU/TbBby2Dxibuv7ZLW3Bs1QEmM7nHjEANfohJLvE0XVujisn1qPJcZxg+qDucsr+bP6fLD1rPS3AhJ7EQ==
+
+dotenv@^16.5.0:
+  version "16.5.0"
+  resolved "https://registry.npmjs.org/dotenv/-/dotenv-16.5.0.tgz"
+  integrity sha512-m/C+AwOAr9/W1UOIZUo232ejMNnJAJtYQjUbHoNTBNTJSvqzzDh7vnrei3o3r3m9blf6ZoDkvcw0VmozNRFJxg==
 
 dunder-proto@^1.0.1:
   version "1.0.1"
@@ -1474,6 +1494,11 @@ keyv@^4.5.4:
   dependencies:
     json-buffer "3.0.1"
 
+klona@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.npmjs.org/klona/-/klona-2.0.6.tgz"
+  integrity sha512-dhG34DXATL5hSxJbIexCft8FChFXtmskoZYnoPWjXQuebWYCNkVeV3KkGegCK9CP1oswI/vQibS2GY7Em/sJJA==
+
 levn@^0.4.1:
   version "0.4.1"
   resolved "https://registry.npmjs.org/levn/-/levn-0.4.1.tgz"
@@ -1510,6 +1535,11 @@ lucide@^0.515.0:
   version "0.515.0"
   resolved "https://registry.npmjs.org/lucide/-/lucide-0.515.0.tgz"
   integrity sha512-n7tFK3R1HdsxwM5rMOa6twAi/4RGZCysc7dmk7Cr2GiOUcnHX0+MX9xw3xynpbekXCgS4+o9HeIWhBl3rZHIAA==
+
+mantine-form-zod-resolver@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.npmjs.org/mantine-form-zod-resolver/-/mantine-form-zod-resolver-1.2.1.tgz"
+  integrity sha512-8Y7jX3ybZEhQeLzkbrzCS9gulnCX7sgjM5bCkRDxQHbmal8V5lLM9yZq583UEme8DuM77x/BJNTrBkYZo+JUFw==
 
 math-intrinsics@^1.1.0:
   version "1.1.0"
@@ -1988,6 +2018,11 @@ typescript@>=4.8.4, "typescript@>=4.8.4 <5.9.0", typescript@~5.8.3:
   resolved "https://registry.npmjs.org/typescript/-/typescript-5.8.3.tgz"
   integrity sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ==
 
+undici-types@~7.8.0:
+  version "7.8.0"
+  resolved "https://registry.npmjs.org/undici-types/-/undici-types-7.8.0.tgz"
+  integrity sha512-9UJ2xGDvQ43tYyVMpuHlsgApydB8ZKfVYTsLDhXkFL/6gfkp+U8xTGdh8pMJv1SpZna0zxG1DwsKZsreLbXBxw==
+
 update-browserslist-db@^1.1.3:
   version "1.1.3"
   resolved "https://registry.npmjs.org/update-browserslist-db/-/update-browserslist-db-1.1.3.tgz"
@@ -2045,6 +2080,11 @@ util-deprecate@^1.0.2:
   resolved "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz"
   integrity sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==
 
+uuid@^11.1.0:
+  version "11.1.0"
+  resolved "https://registry.npmjs.org/uuid/-/uuid-11.1.0.tgz"
+  integrity sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A==
+
 "vite@^4.2.0 || ^5.0.0 || ^6.0.0 || ^7.0.0-beta.0", vite@^6.3.5:
   version "6.3.5"
   resolved "https://registry.npmjs.org/vite/-/vite-6.3.5.tgz"
@@ -2080,3 +2120,8 @@ yocto-queue@^0.1.0:
   version "0.1.0"
   resolved "https://registry.npmjs.org/yocto-queue/-/yocto-queue-0.1.0.tgz"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
+
+zod@^3.25.65, zod@>=3.25.0:
+  version "3.25.65"
+  resolved "https://registry.npmjs.org/zod/-/zod-3.25.65.tgz"
+  integrity sha512-kMyE2qsXK1p+TAvO7zsf5wMFiCejU3obrUDs9bR1q5CBKykfvp7QhhXrycUylMoOow0iEUSyjLlZZdCsHwSldQ==

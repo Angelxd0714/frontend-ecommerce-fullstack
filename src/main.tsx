@@ -1,21 +1,25 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import '@mantine/core/styles.css';
-import App from './App.tsx'
-import { BrowserRouter } from 'react-router-dom'
-import { MantineProvider } from '@mantine/core';
-import { createTheme } from '@mantine/core';
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "@mantine/core/styles.css";
+import App from "./App.tsx";
+import { BrowserRouter } from "react-router-dom";
+import { MantineProvider } from "@mantine/core";
+import { createTheme } from "@mantine/core";
+import { Provider } from "react-redux";
+import { store } from "./store/index.ts";
+
 const theme = createTheme({
-  fontFamily: 'Open Sans, sans-serif',
-  primaryColor: 'cyan',
-  
+  fontFamily: "Open Sans, sans-serif",
+  primaryColor: "cyan",
 });
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
-     <BrowserRouter> 
+    <BrowserRouter>
       <MantineProvider theme={theme}>
-      <App />
+        <Provider store={store}>
+          <App />
+        </Provider>
       </MantineProvider>
     </BrowserRouter>
-  </StrictMode>,
-)
+  </StrictMode>
+);

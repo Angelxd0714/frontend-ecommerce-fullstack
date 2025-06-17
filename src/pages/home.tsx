@@ -21,40 +21,48 @@ import {
     CiDeliveryTruck 
   } from 'react-icons/ci';
   import { useMediaQuery } from '@mantine/hooks';
-  
-  const featuredProducts = [
+import { ProductCard } from '../components/ProductCard';
+import type { Product } from '../types/product';
+import { v4 as uuid } from 'uuid';
+  const featuredProducts: Product[] = [
     {
-      id: 1,
+      id: uuid().toString(),
       name: 'Zapatillas Deportivas Pro',
       price: 89.99,
-      discount: 119.99,
+      description: 'Zapatillas deportivas de alta calidad',
+      stock: 10,
       image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff',
-      rating: 4.5,
+      
       category: 'Deportes'
     },
     {
-      id: 2,
+      id: uuid().toString(),
       name: 'Smartphone Ultra X',
       price: 699.99,
+      description: 'Smartphone Ultra X de alta calidad',
+      stock: 10,
       image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9',
-      rating: 4.8,
+      
       category: 'Tecnología'
     },
     {
-      id: 3,
+      id: uuid().toString(),
       name: 'Reloj Inteligente Pro',
       price: 199.99,
+      description: 'Reloj inteligente de alta calidad',
+      stock: 10,
       image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30',
-      rating: 4.3,
+      
       category: 'Tecnología'
     },
     {
-      id: 4,
+      id: uuid().toString(),
       name: 'Auriculares Inalámbricos',
       price: 129.99,
-      discount: 159.99,
+      description: 'Auriculares inalámbricos de alta calidad',
+      stock: 10,
       image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e',
-      rating: 4.7,
+      
       category: 'Audio'
     }
   ];
@@ -137,56 +145,7 @@ import {
         </Title>
         <Grid gutter="xl">
           {featuredProducts.map((product) => (
-            <Grid.Col key={product.id} span={{ base: 12, sm: 6, md: 4, lg: 3 }}>
-              <Card shadow="sm" padding="lg" radius="md" withBorder>
-                <Card.Section>
-                  <Image
-                    src={product.image}
-                    height={160}
-                    alt={product.name}
-                  />
-                </Card.Section>
-  
-                <Group justify="space-between" mt="md" mb="xs">
-                  <Text fw={500}>{product.name}</Text>
-                  <Badge color="blue" variant="light">
-                    {product.category}
-                  </Badge>
-                </Group>
-  
-                <Group gap="xs" mb="xs">
-                  {[...Array(5)].map((_, i) => (
-                    <CiStar 
-                      key={i} 
-                      size={16} 
-                      color={i < Math.floor(product.rating) ? theme.colors.yellow[6] : theme.colors.gray[4]} 
-                      fill={i < Math.floor(product.rating) ? theme.colors.yellow[6] : 'transparent'} 
-                    />
-                  ))}
-                  <Text size="sm">({product.rating})</Text>
-                </Group>
-  
-                <Group mt="md">
-                  <Text fw={700} size="lg">
-                    ${product.price.toFixed(2)}
-                  </Text>
-                  {product.discount && (
-                    <Text size="sm" c="dimmed" td="line-through">
-                      ${product.discount.toFixed(2)}
-                    </Text>
-                  )}
-                </Group>
-  
-                <Button 
-                  fullWidth 
-                  mt="md" 
-                  radius="md"
-                  rightSection={<CiShoppingCart size={18} />}
-                >
-                  Añadir al carrito
-                </Button>
-              </Card>
-            </Grid.Col>
+            <ProductCard key={product.id} product={product} />
           ))}
         </Grid>
   

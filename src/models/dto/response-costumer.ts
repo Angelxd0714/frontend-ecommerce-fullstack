@@ -1,5 +1,5 @@
-export type Customer = {
-   
+export interface ResponseCostumer {
+    id: string;
     identity: number;
     name: string;
     email: string;

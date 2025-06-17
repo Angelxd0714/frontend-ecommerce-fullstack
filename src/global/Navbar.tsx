@@ -3,12 +3,17 @@ import { useLocation, Link } from 'react-router-dom';
 import { CiHome, CiShoppingCart, CiUser, CiDiscount1, CiSettings } from 'react-icons/ci';
 import { FiLogOut } from 'react-icons/fi';
 import { Burger, Container, Group, Button, Text, Flex, Box, Drawer, ScrollArea, Divider, rem, ActionIcon, Avatar, Badge } from '@mantine/core';
+import { CarritoModal } from '../components/Moda';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import type { RootState } from '../store';
 
 export function Navbar() {
   const [opened, { toggle, close }] = useDisclosure(false);
   const location = useLocation();
+  const [openedModal, setOpenedModal] = useState(false);    
+  const {carrito} = useSelector((state: RootState) => state.product);  
 
-  // Paleta de colores profesional para ecommerce
   const theme = {
     primary: '#4f46e5',  // Indigo-600
     secondary: '#f9fafb', // Gray-50
@@ -82,8 +87,7 @@ export function Navbar() {
           <Group gap="md">
             {/* Carrito de compras mejorado */}
             <Button
-              component={Link}
-              to="/cart"
+              onClick={() => setOpenedModal(true)}
               variant="light"
               color={theme.primary}
               leftSection={<CiShoppingCart size={22} />}
@@ -98,7 +102,7 @@ export function Navbar() {
                     transform: 'scale(1.1)'
                   }}
                 >
-                  3
+                  {carrito.length}
                 </Badge>
               }
               radius="xl"
@@ -212,49 +216,13 @@ export function Navbar() {
               </Button>
             ))}
             
-            {/* Carrito en móvil - versión mejorada */}
-            <Button
-              fullWidth
-              component={Link}
-              to="/cart"
-              variant="light"
-              color={theme.primary}
-              justify="space-between"
-              leftSection={<CiShoppingCart size={22} />}
-              rightSection={
-                <Badge 
-                  color={theme.primary}
-                  variant="filled"
-                  size="sm"
-                  c="white"
-                  style={{ fontWeight: 700 }}
-                >
-                  3
-                </Badge>
-              }
-              onClick={close}
-              styles={{
-                root: {
-                  fontWeight: 600,
-                  border: `1px solid ${theme.primary}`,
-                  '&:hover': {
-                    backgroundColor: theme.primary,
-                    color: 'white',
-                    '& .mantine-Badge-root': {
-                      backgroundColor: 'white',
-                      color: theme.primary
-                    }
-                  }
-                }
-              }}
-              my={4}
-              size="lg"
-            >
-              Carrito
-            </Button>
+           
           </Box>
         </ScrollArea>
       </Drawer>
+      <CarritoModal
+        opened={openedModal}
+        setOpened={setOpenedModal}   />
     </Box>
   );
 }
