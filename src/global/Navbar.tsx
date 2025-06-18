@@ -29,10 +29,7 @@ export function Navbar() {
     { label: 'Promociones', path: '/promotions', icon: <CiDiscount1 size={20} /> },
   ];
 
-  const userMenu = [
-    { label: 'Configuración', icon: <CiSettings size={18} /> },
-    { label: 'Cerrar sesión', icon: <FiLogOut size={18} />, color: 'red' }
-  ];
+
 
   return (
     <Box 
@@ -127,14 +124,7 @@ export function Navbar() {
               Carrito
             </Button>
 
-            {/* Avatar usuario (Desktop) */}
-            <Avatar 
-              src="/user-avatar.jpg" 
-              alt="User" 
-              size={36}
-              radius="xl"
-              visibleFrom="md"
-            />
+           
 
             {/* Mobile Burger */}
             <Burger
@@ -194,27 +184,7 @@ export function Navbar() {
             <Text fz="sm" fw={600} mb="sm" c={theme.lightText} pl="sm">
               Cuenta
             </Text>
-            {userMenu.map((item) => (
-              <Button
-                key={item.label}
-                fullWidth
-                variant="subtle"
-                color={item.color || 'gray'}
-                justify="start"
-                leftSection={item.icon}
-                onClick={close}
-                styles={{ 
-                  inner: { 
-                    justifyContent: 'flex-start',
-                    fontSize: rem(15)
-                  } 
-                }}
-                my={4}
-                size="lg"
-              >
-                {item.label}
-              </Button>
-            ))}
+           
             
            
           </Box>

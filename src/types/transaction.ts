@@ -1,4 +1,5 @@
 import type { Customer } from "./customer";
+import type { Delivery } from "./delivery";
 export type Transaction = {
     products:{
         productId: string;
@@ -8,4 +9,5 @@ export type Transaction = {
     installments?: number | undefined;
     cardToken: string;
     acceptanceToken: string;
+    delivery: Delivery;
 }

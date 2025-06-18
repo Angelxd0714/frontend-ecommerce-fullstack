@@ -3,6 +3,8 @@ import type { PayCard } from "../types/pay-card";
 import type { ResponseToken } from "../models/dto/reponse-token";
 import type { Transaction } from "../types/transaction";
 import type { ResponseTransaction } from "../models/dto/response-transaction";
+import type { ResponseWebHook } from "../models/dto/reponse-webhokens";
+import type { WebHook } from "../types/webHooks";
 const API_URL = "http://localhost:3000";
 const api = axios.create({
     baseURL: API_URL,
@@ -29,4 +31,14 @@ const api = axios.create({
       console.error('Error al crear la transacción:', error);
       throw error;
     }
+  
   };
+  export const getTransactions = async (webHook: WebHook) : Promise<ResponseWebHook> => {
+    try {
+      const response = await api.post('/transactions/webhook', webHook);
+      return response.data;
+    } catch (error) {
+      console.error('Error al obtener las transacciones:', error);
+      throw error;
+    }
+  }

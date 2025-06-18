@@ -5,6 +5,7 @@ export interface ResponseTransaction {
     createdAt: Date;
     updatedAt: Date;
     productId: string;
+    status: string;
     customerId: string;
     wompiTransactionId: string;
 }

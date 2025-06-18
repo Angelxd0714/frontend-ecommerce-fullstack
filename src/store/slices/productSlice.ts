@@ -54,22 +54,32 @@ const productSlice = createSlice({
             quantity: 1
           });
         }
+        localStorage.setItem('carrito', JSON.stringify(state.carrito));
       },
       updateCarrito(state, action: PayloadAction<{productId: string, quantity: number}>) {
         const item = state.carrito.find(item => item.product.id === action.payload.productId);
         if (item) {
           item.quantity = action.payload.quantity;
         }
+        localStorage.setItem('carrito', JSON.stringify(state.carrito));
       },
       removeCarrito(state, action: PayloadAction<string>) {
         state.carrito = state.carrito.filter(item => item.product.id !== action.payload);
+        localStorage.setItem('carrito', JSON.stringify(state.carrito));
       },
     clearCarrito(state) {
       state.carrito = [];
       state.quantity = 1;
+      localStorage.setItem('carrito', JSON.stringify(state.carrito));
+    },
+    loadCarrito(state) {
+      const carritoData = localStorage.getItem('carrito');
+      if (carritoData) {
+        state.carrito = JSON.parse(carritoData);
+      }
     },
   },
 });
 
-export const { setSelectedProduct, clearSelectedProduct, setProducts, setCategories, clearProducts, clearCategories, addCarrito, removeCarrito, clearCarrito, updateCarrito } = productSlice.actions;
+export const { setSelectedProduct, clearSelectedProduct, setProducts, setCategories, clearProducts, clearCategories, addCarrito, removeCarrito, clearCarrito, updateCarrito, loadCarrito } = productSlice.actions;
 export default productSlice.reducer;

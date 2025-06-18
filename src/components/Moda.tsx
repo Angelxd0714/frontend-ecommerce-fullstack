@@ -32,8 +32,11 @@ export const CarritoModal = ({
   const dispatch = useDispatch();
   const theme = useMantineTheme();
   const {carrito} = useSelector((state: RootState) => state.product);
-
-  // Calcular total considerando cantidades individuales
+  
+  
+  const customerData = localStorage.getItem('transaction');
+  const customer = customerData ? JSON.parse(customerData) : null;
+  console.log(customer);
   const total = carrito.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
 
   const actualizarCantidad = (productId: string, nuevaCantidad: number) => {
