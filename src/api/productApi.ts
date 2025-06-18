@@ -1,6 +1,6 @@
 import axios from "axios";
 import type { ResponseProduct } from "../models/dto/response-product";
-const API_URL = "http://localhost:3000";
+const API_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const getProducts = async () : Promise<ResponseProduct[]> => {
     try {

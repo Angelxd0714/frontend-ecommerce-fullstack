@@ -1,8 +1,7 @@
 import { useDisclosure } from '@mantine/hooks';
 import { useLocation, Link } from 'react-router-dom';
-import { CiHome, CiShoppingCart, CiUser, CiDiscount1, CiSettings } from 'react-icons/ci';
-import { FiLogOut } from 'react-icons/fi';
-import { Burger, Container, Group, Button, Text, Flex, Box, Drawer, ScrollArea, Divider, rem, ActionIcon, Avatar, Badge } from '@mantine/core';
+import { CiHome, CiShoppingCart, CiUser } from 'react-icons/ci';
+import { Burger, Container, Group, Button, Text, Flex, Box, Drawer, ScrollArea, Divider, rem, Avatar, Badge } from '@mantine/core';
 import { CarritoModal } from '../components/Moda';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -25,8 +24,7 @@ export function Navbar() {
   const links = [
     { label: 'Inicio', path: '/', icon: <CiHome size={20} /> },
     { label: 'Productos', path: '/products', icon: <CiShoppingCart size={20} /> },
-    { label: 'Clientes', path: '/customers', icon: <CiUser size={20} /> },
-    { label: 'Promociones', path: '/promotions', icon: <CiDiscount1 size={20} /> },
+    { label: 'Clientes', path: '/customers', icon: <CiUser size={20} /> }
   ];
 
 

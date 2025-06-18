@@ -24,7 +24,7 @@ export const ProductComponent = () => {
        
     // State for selected category (would need useState in a real implementation)
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-    const categoriesSelect = new Set(products.map((product: Product) => product.category));
+    const categoriesSelect = new Set(products?.map((product: Product) => product.category));
     const filteredProducts = selectedCategory 
         ? products.filter(product => categoriesSelect.has(product.category))
         : products;

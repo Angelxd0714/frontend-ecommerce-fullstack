@@ -1,7 +1,7 @@
 import type { ResponseCostumer } from "../models/dto/response-costumer";
 import type { Customer } from "../types/customer";
 import axios from "axios";
-const API_URL = "http://localhost:3000";
+const API_URL = import.meta.env.VITE_BACKEND_URL;
 const api = axios.create({
     baseURL: API_URL,
     withCredentials: true, // Importante para cookies/sesión

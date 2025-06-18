@@ -16,19 +16,16 @@ import {
   CiShoppingCart,
   CiUser,
   CiMapPin,
-  CiCreditCard1,
-  CiSquareInfo,
-  CiCircleCheck,
+  CiCreditCard1
 } from "react-icons/ci";
 import { useSelector } from "react-redux";
 import type { RootState } from "../store";
 import type { Transaction } from "../types/transaction";
 import { createTransaction, getTransactions } from "../api/transactionApi";
 import { useDispatch } from "react-redux";
-import { clearTransactionState, setStatePay, setTransactionCompleted } from "../store/slices/transactionSlice";
+import { clearTransactionState, setStatePay, setTransactionCompleted, setTransactionFailed } from "../store/slices/transactionSlice";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { notifications } from "@mantine/notifications";
 
 export const CheckoutSummary = () => {
   const theme = useMantineTheme();
@@ -48,6 +45,7 @@ export const CheckoutSummary = () => {
     if (transactionCompleted) {
       navigate('/payment-success');
       dispatch(clearTransactionState());
+
     }
   }, [transactionCompleted, navigate, dispatch]);
 
@@ -91,64 +89,16 @@ export const CheckoutSummary = () => {
         status: response.status
       });
       console.log("Transacción webHook:", responseWebHook);
-      notifications.show({
-        title: (
-          <div className="flex items-center gap-2">
-            <CiCircleCheck className="text-white text-xl" />
-            <span>Pago exitoso</span>
-          </div>
-        ),
-        message: "Tu transacción se ha completado correctamente",
-        position: "top-right",
-        autoClose: 5000,
-        color: "green",
-        withCloseButton: true,
-        
-      });
-      dispatch(setTransactionCompleted(true));
-      
+      if(responseWebHook.status === "APPROVED"){
+        dispatch(setTransactionCompleted(true));
+      }else{
+        dispatch(setTransactionFailed(true));
+        navigate('/payment-success');
+      }
     } catch (error) {
-     
       setErrorMessage("Ocurrió un error al procesar el pago. Por favor intenta nuevamente.");
-      notifications.show({
-        id: 'payment-error',
-        title: (
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <CiSquareInfo size={20} />
-            <span>Error en el pago</span>
-          </div>
-        ),
-        message: (
-          <div style={{ marginTop: '8px' }}>
-            <p style={{ marginBottom: '12px' }}>{errorMessage}</p>
-            <Button
-              size="xs"
-              variant="outline"
-              color="red"
-              leftSection={<CiShoppingCart size={16} />}
-              onClick={() => {
-                notifications.hide('payment-error');
-                navigate('/products');
-              }}
-              
-            >
-              Volver a productos
-            </Button>
-          </div>
-        ),
-        color: 'red',
-        autoClose: false,
-        withCloseButton: true,
-        style: {
-          borderLeft: '4px solid #e03131',
-          backgroundColor: '#fff5f5'
-        },
-        classNames: {
-          title: 'text-red-700 font-semibold',
-          description: 'text-gray-800',
-          closeButton: 'text-red-600 hover:bg-red-50'
-        }
-      });
+      navigate('/payment-success');
+      dispatch(setTransactionFailed(true));
     } finally {
       setLoading(false);
       dispatch(setStatePay(false));
@@ -224,11 +174,11 @@ export const CheckoutSummary = () => {
         <Box component="div">
           <Text mb="sm">Información de envío:</Text>
           <Stack>
-            <Group justify="space-between">
+            <Group >
               <CiUser size={18} color={theme.colors.gray[6]} />
               <Text>{customer?.name}</Text>
             </Group>
-            <Group justify="space-between">
+            <Group >
               <CiMapPin size={18} color={theme.colors.gray[6]} />
               <Text>{customer?.delivery.address}</Text>
             </Group>

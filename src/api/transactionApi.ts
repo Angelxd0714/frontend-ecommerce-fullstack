@@ -5,7 +5,7 @@ import type { Transaction } from "../types/transaction";
 import type { ResponseTransaction } from "../models/dto/response-transaction";
 import type { ResponseWebHook } from "../models/dto/reponse-webhokens";
 import type { WebHook } from "../types/webHooks";
-const API_URL = "http://localhost:3000";
+const API_URL = import.meta.env.VITE_BACKEND_URL;
 const api = axios.create({
     baseURL: API_URL,
     withCredentials: true, // Importante para cookies/sesión

@@ -2,15 +2,16 @@ import { useForm } from "@mantine/form";
 import { z } from "zod";
 import { zodResolver } from "mantine-form-zod-resolver";
 import { Card, Title, Stack, Radio, Group, TextInput, Grid, Select, Divider, Badge, Button, Text } from "@mantine/core";
-import { CiCalendar, CiCreditCard1, CiLock } from "react-icons/ci";
+import { CiCalendar, CiCreditCard1, CiLock} from "react-icons/ci";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import type { RootState } from "../store";
-import { setStatePay, setSelectedTransaction } from "../store/slices/transactionSlice";
+import {  setSelectedTransaction } from "../store/slices/transactionSlice";
 import type { Transaction } from "../types/transaction";
 import { getAcceptanceToken } from "../shared/service.wompi";
 import { createCard } from "../api/transactionApi";
 import { notifications } from "@mantine/notifications";
+import { useState } from "react";
 
 type FormValues = {
   paymentMethod: 'credit' | 'debit';
@@ -76,6 +77,8 @@ const checkoutFormSchema = z.object({
 });
 
 export const CheckoutForm = () => {
+   
+    const [errorMessage, setErrorMessage] = useState("");
   const form = useForm<FormValues>({
     initialValues: {
       paymentMethod: 'credit' ,
@@ -188,12 +191,17 @@ export const CheckoutForm = () => {
         };
   
         dispatch(setSelectedTransaction(transactionData));
+        notifications.show({
+              title: 'Tarjeta procesada',
+              message: 'Tu tarjeta ha sido procesada exitosamente',
+              color: 'green',
+              }); 
         navigate('/checkout-summary');
       } catch (error) {
-       
+        setErrorMessage("Ocurrió un error al procesar la tarjeta. Por favor intenta nuevamente.");
         notifications.show({
           title: 'Error',
-          message: 'Error al validar la tarjeta',
+          message: errorMessage,
           color: 'red',
         });
       }
