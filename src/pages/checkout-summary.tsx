@@ -49,10 +49,6 @@ export const CheckoutSummary = () => {
     }
   }, [transactionCompleted, navigate, dispatch]);
 
-  const handleBackToProducts = () => {
-    navigate('/products');
-  };
-
   const createTransactionHandler = async () => {
     try {
       setLoading(true);
@@ -60,7 +56,8 @@ export const CheckoutSummary = () => {
       dispatch(setStatePay(true));
       
       if (!selectedTransaction) {
-        throw new Error("No hay datos de transacción disponibles");
+        setErrorMessage("No hay datos de transacción disponibles");
+        throw new Error(errorMessage);
       }
 
       const orderDetails: Transaction = {
