@@ -11,6 +11,7 @@ import { useEffect } from 'react';
 import { loadCarrito } from './store/slices/productSlice';
 import { loadTransaction } from './store/slices/transactionSlice';
 import { Result } from './pages/result';
+import { NotFound } from './pages/not-found';
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -30,6 +31,7 @@ function App() {
         <Route path="/transactions" element={<Transactions />} />
         <Route path="/checkout-summary" element={<CheckoutSummary />} />
         <Route path="/payment-success" element={<Result />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
    
     </Layout>

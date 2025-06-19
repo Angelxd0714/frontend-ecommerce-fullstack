@@ -8,8 +8,7 @@ import { useNavigate } from "react-router-dom";
 import type { RootState } from "../store";
 import {  setSelectedTransaction } from "../store/slices/transactionSlice";
 import type { Transaction } from "../types/transaction";
-import { getAcceptanceToken } from "../shared/service.wompi";
-import { createCard } from "../api/transactionApi";
+import { createCardToken, getAcceptanceToken } from "../shared/service.wompi";
 import { notifications } from "@mantine/notifications";
 import { useState } from "react";
 
@@ -153,7 +152,7 @@ export const CheckoutForm = () => {
       try {
        
         
-        const token = await createCard({
+        const token = await createCardToken({
           number: values.cardNumber.replace(/\s/g, ''),
           cvc: values.cvv,
           exp_month: values.expiry.slice(0, 2),
@@ -185,7 +184,7 @@ export const CheckoutForm = () => {
             delivery: { address: '', city: '', postalCode: '' }
           },
           installments: values.installments,
-          cardToken: token.token,
+          cardToken: token,
           acceptanceToken: acceptanceToken,
           delivery: customer?.delivery || { address: '', city: '', postalCode: '' }
         };

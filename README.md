@@ -1,3 +1,39 @@
+# 🛒 E-commerce Frontend – React + TypeScript + Vite
+
+Este proyecto representa el **frontend** de una tienda en línea simulada, desarrollado con **React**, **TypeScript** y **Vite**, e integrado con la pasarela de pagos **[Wompi](https://www.wompi.co/)**. Cuenta con funcionalidades reales como catálogo de productos, carrito de compras, y checkout con Wompi.
+
+---
+
+## ⚙️ Tecnologías utilizadas
+
+- ⚛️ [React](https://reactjs.org/)
+- 🟦 [TypeScript](https://www.typescriptlang.org/)
+- ⚡ [Vite](https://vitejs.dev/)
+- 💳 [Wompi](https://www.wompi.co/) para pagos
+- 🎨 (Opcional) [Mantine](https://mantine.dev/) para estilos
+- 🧪 [ESLint](https://eslint.org/) con configuración avanzada
+- 📦 [PNPM / Yarn / NPM] como gestor de paquetes
+
+---
+
+## ✨ Funcionalidades principales
+
+- 🛍️ Visualización de productos y categorías
+- 🧺 Carrito de compras con almacenamiento local
+- 🔐 Validaciones básicas de formularios
+- 💳 Checkout integrado con **Wompi**
+- 🧪 Componentes modulares y tipados
+- ⚡ Hot Reload con Vite
+
+---
+
+## 🚀 Instalación y ejecución
+
+1. Clona el repositorio:
+```bash
+git clone https://github.com/tu-usuario/ecommerce-frontend.git
+cd ecommerce-frontend
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -52,3 +88,4 @@ export default tseslint.config({
   },
 })
 ```
+
