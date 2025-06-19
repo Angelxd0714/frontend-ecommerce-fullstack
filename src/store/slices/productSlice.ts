@@ -19,7 +19,7 @@ const initialState: ProductState = {
   categories: [],
   carrito: [],
   idsProductos: [],
-  quantity: 1,
+  quantity: 0,
 };
 
 const productSlice = createSlice({
@@ -69,7 +69,7 @@ const productSlice = createSlice({
       },
     clearCarrito(state) {
       state.carrito = [];
-      state.quantity = 1;
+      state.quantity = 0;
       localStorage.setItem('carrito', JSON.stringify(state.carrito));
     },
     loadCarrito(state) {
