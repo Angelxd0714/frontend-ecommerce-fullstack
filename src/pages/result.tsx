@@ -107,7 +107,14 @@ export const Result = () => {
                             </Button>
                             <Button 
                                 leftSection={<FaShoppingBag size="1rem" />}
-                                onClick={() => navigate('/products')}
+                                onClick={() => {
+                                    navigate('/products');
+                                    dispatch(clearTransactionState());
+                                    dispatch(setStatePay(false));
+                                    dispatch(setTransactionCompleted(false));
+                                    dispatch(setTransactionFailed(false));
+                                    dispatch(clearCarrito());
+                                }}
                             >
                                 Seguir comprando
                             </Button>
