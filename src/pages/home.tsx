@@ -9,7 +9,6 @@ import {
     Button, 
     Badge, 
     Group, 
-    Stack, 
     rem,
     useMantineTheme
   } from '@mantine/core';
